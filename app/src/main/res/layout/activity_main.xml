@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="com.kotlin.mvvm.viewmodel.LoginViewModel" />
+    </data>
+
+    <!--<android.support.constraint.ConstraintLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--&gt;-->
+
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+            <EditText
+                    android:id="@+id/email_edittext"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:afterTextChanged="@{(editable)->viewModel.onEmailTextChanged(editable)}"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:padding="8dp"
+                    android:layout_marginTop="20dp"
+
+            />
+
+            <EditText
+                    android:id="@+id/pwd_edittext"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:afterTextChanged="@{(editable)->viewModel.onPasswordTextChanged(editable)}"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:padding="10dp" />
+
+
+            <Button
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:onClick="@{()-> viewModel.onLoginClicked()}"
+                    android:text="LOGIN"
+                    android:layout_marginBottom="20dp"
+                    bind:toastMessage="@{viewModel.toastMessage}" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!--</android.support.constraint.ConstraintLayout>-->
+</layout>
